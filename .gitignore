@@ -1,2 +1,5 @@
 # ignore npm stuff
 node_modules
+
+# ignoring our env keys
+.env
