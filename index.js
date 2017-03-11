@@ -29,8 +29,10 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-const loginController = require('./controllers/login')
+const loginController = require('./controllers/login'),
+      userController = require('./controllers/users');
 app.use('/login', loginController);
+app.use('/users', userController);
 
 app.listen(port, ()=> {
   console.log(`dumplings on ${port}`);
