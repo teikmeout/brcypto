@@ -6,8 +6,8 @@ const express = require('express'),
       app = express(),
       port = process.env.PORT || 3000,
       morgan = require('morgan'),
-      mustache = require('mustache'),
-      bodyParser = require('body-parser')
+      mustache = require('mustache-express'),
+      bodyParser = require('body-parser');
 
 // setting up views
 app.engine('html', mustache());
@@ -21,7 +21,16 @@ app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
 
 // setting up body parser
-app.use(bodyParser)
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
+
+// setting up a route
+app.get('/', (req, res) => {
+  res.render('index');
+});
+
+const loginController = require('./controllers/login')
+app.use('/login', loginController);
 
 app.listen(port, ()=> {
   console.log(`dumplings on ${port}`);

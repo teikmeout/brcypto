@@ -1,0 +1,11 @@
+.border {
+  border: 1px solid firebrick;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
